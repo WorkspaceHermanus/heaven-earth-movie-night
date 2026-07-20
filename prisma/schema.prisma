@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  CANCELLED
+  EXPIRED
+  REFUNDED
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  reference     String        @unique
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  quantity      Int
+  /// Stored in cents (ZAR) to avoid floating point drift.
+  totalAmount   Int
+  status        PaymentStatus @default(PENDING)
+
+  yocoCheckoutId String?      @unique
+  yocoPaymentId  String?
+
+  /// A PENDING booking holds its seats until this moment, then the seats
+  /// return to the pool. Prevents abandoned checkouts from blocking sales.
+  holdExpiresAt DateTime
+  paidAt        DateTime?
+  cancelledAt   DateTime?
+
+  /// Set once the confirmation email is accepted by Resend, so webhook
+  /// retries never send a duplicate.
+  emailSentAt   DateTime?
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([status])
+  @@index([email])
+  @@index([createdAt])
+}
+
+/// Append-only log of Yoco webhook deliveries. The unique event id makes
+/// webhook processing idempotent under Yoco's at-least-once retries.
+model WebhookEvent {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  type        String
+  payload     Json
+  processedAt DateTime @default(now())
+}
