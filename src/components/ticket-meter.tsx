@@ -35,7 +35,7 @@ export function TicketMeter({ remaining }: { remaining: number }) {
       </div>
 
       <div
-        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-sand-200/70"
+        className="mt-3 h-1 w-full overflow-hidden bg-sand-200/70"
         role="progressbar"
         aria-valuenow={taken}
         aria-valuemin={0}
@@ -44,7 +44,7 @@ export function TicketMeter({ remaining }: { remaining: number }) {
       >
         <div
           className={cn(
-            "h-full rounded-full transition-[width] duration-700 ease-out",
+            "h-full transition-[width] duration-700 ease-out",
             soldOut ? "bg-rose-400" : low ? "bg-amber-400" : "bg-sand-500",
           )}
           style={{ width: `${Math.max(percent, 2)}%` }}

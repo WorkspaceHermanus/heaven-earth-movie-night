@@ -10,7 +10,7 @@ export function BrandMark({ className }: { className?: string }) {
       viewBox="0 0 120 120"
       role="img"
       aria-label="Heaven and Earth Hermanus"
-      className={cn("text-sand-500", className)}
+      className={cn("text-gold", className)}
       fill="none"
     >
       {/* H stem */}

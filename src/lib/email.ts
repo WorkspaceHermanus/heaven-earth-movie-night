@@ -16,11 +16,11 @@ function fromAddress(): string {
 }
 
 const COLORS = {
-  ink: "#2F2A25",
-  muted: "#7A6E61",
-  gold: "#C08F4E",
-  cream: "#FAF7F2",
-  line: "#EAE0D1",
+  ink: "#3E322F",
+  muted: "#857066",
+  gold: "#B07C71",
+  cream: "#FAF7F4",
+  line: "#EDDCD6",
 };
 
 function detailRow(label: string, value: string): string {
@@ -46,7 +46,7 @@ export function renderConfirmationEmail(booking: Booking): string {
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Booking ${booking.reference} confirmed — ${tickets} for ${EVENT.name}.</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.cream};padding:32px 16px;">
     <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 12px 32px -20px rgba(74,52,28,.35);">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:2px;overflow:hidden;box-shadow:0 12px 32px -20px rgba(74,52,28,.35);">
 
         <tr><td style="padding:40px 40px 28px;text-align:center;border-bottom:1px solid ${COLORS.line};">
           <div style="font-family:Georgia,serif;font-size:30px;letter-spacing:.16em;color:${COLORS.gold};font-weight:400;">H&amp;E</div>
@@ -61,7 +61,7 @@ export function renderConfirmationEmail(booking: Booking): string {
         </td></tr>
 
         <tr><td style="padding:28px 40px 0;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.cream};border-radius:12px;padding:22px;text-align:center;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.cream};border-radius:2px;padding:22px;text-align:center;">
             <tr><td style="text-align:center;">
               <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:${COLORS.muted};">Booking reference</div>
               <div style="margin-top:8px;font-family:'Courier New',monospace;font-size:26px;letter-spacing:.12em;color:${COLORS.gold};font-weight:700;">${booking.reference}</div>
@@ -82,7 +82,7 @@ export function renderConfirmationEmail(booking: Booking): string {
         </td></tr>
 
         <tr><td style="padding:28px 40px 0;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBF3F0;border-radius:12px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBF3F0;border-radius:2px;">
             <tr><td style="padding:20px 22px;">
               <div style="font-family:Georgia,serif;font-size:17px;color:${COLORS.ink};">What to bring</div>
               <ul style="margin:12px 0 0;padding-left:18px;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.8;color:${COLORS.muted};">
@@ -96,7 +96,7 @@ export function renderConfirmationEmail(booking: Booking): string {
 
         <tr><td style="padding:28px 40px 40px;text-align:center;">
           <a href="${getAppUrl()}/booking/success?ref=${encodeURIComponent(booking.reference)}"
-             style="display:inline-block;background:${COLORS.gold};color:#ffffff;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:.06em;padding:14px 30px;border-radius:999px;font-weight:600;">
+             style="display:inline-block;background:${COLORS.gold};color:#ffffff;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:.06em;padding:14px 30px;border-radius:0;font-weight:600;">
             View your confirmation
           </a>
         </td></tr>

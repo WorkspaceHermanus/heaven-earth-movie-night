@@ -4,35 +4,35 @@
 
 @layer base {
   :root {
-    --background: 38 38% 97%;
-    --foreground: 30 12% 16%;
+    --background: 30 43% 97%;
+    --foreground: 12 15% 21%;
 
     --card: 0 0% 100%;
-    --card-foreground: 30 12% 16%;
+    --card-foreground: 12 15% 21%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 12% 16%;
+    --popover-foreground: 12 15% 21%;
 
-    --primary: 33 47% 53%;
-    --primary-foreground: 40 40% 98%;
+    --primary: 10 33% 63%;
+    --primary-foreground: 30 40% 98%;
 
-    --secondary: 18 44% 91%;
-    --secondary-foreground: 25 30% 26%;
+    --secondary: 33 33% 92%;
+    --secondary-foreground: 12 20% 27%;
 
-    --muted: 36 30% 92%;
-    --muted-foreground: 30 10% 45%;
+    --muted: 30 30% 94%;
+    --muted-foreground: 15 12% 45%;
 
-    --accent: 11 30% 88%;
-    --accent-foreground: 25 30% 26%;
+    --accent: 17 40% 89%;
+    --accent-foreground: 12 20% 27%;
 
-    --destructive: 0 65% 48%;
+    --destructive: 0 55% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 34 28% 88%;
-    --input: 34 28% 88%;
-    --ring: 33 47% 53%;
+    --border: 22 30% 87%;
+    --input: 22 30% 87%;
+    --ring: 10 33% 63%;
 
-    --radius: 1rem;
+    --radius: 0.125rem;
   }
 
   * {
@@ -82,24 +82,17 @@
     @apply text-[0.7rem] font-medium uppercase tracking-[0.3em] text-sand-600;
   }
 
-  /* Soft, organic wash used behind the hero and booking sections. */
+  /*
+   * Flat editorial wash — a barely-there cream vignette, no gradients that
+   * announce themselves. Kept as a class so full-height pages share it.
+   */
   .aurora {
-    background-image:
-      radial-gradient(
-        60% 55% at 15% 10%,
-        rgba(219, 203, 179, 0.5) 0%,
-        transparent 60%
-      ),
-      radial-gradient(
-        50% 50% at 85% 20%,
-        rgba(235, 207, 198, 0.45) 0%,
-        transparent 60%
-      ),
-      radial-gradient(
-        70% 60% at 50% 100%,
-        rgba(245, 239, 230, 0.9) 0%,
-        transparent 65%
-      );
+    background-color: hsl(30 43% 97%);
+    background-image: radial-gradient(
+      120% 90% at 50% 0%,
+      rgba(245, 236, 232, 0.65) 0%,
+      transparent 70%
+    );
   }
 
   .hairline {

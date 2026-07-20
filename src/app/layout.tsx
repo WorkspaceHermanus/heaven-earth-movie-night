@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF7F2",
+  themeColor: "#FBF7F4",
   width: "device-width",
   initialScale: 1,
 };
@@ -67,8 +67,10 @@ const eventJsonLd = {
     name: EVENT.venue,
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Farm 11, R320, Hemel en Aarde Valley",
       addressLocality: "Hermanus",
       addressRegion: "Western Cape",
+      postalCode: "7200",
       addressCountry: "ZA",
     },
   },
@@ -100,7 +102,7 @@ export default function RootLayout({
           position="top-center"
           toastOptions={{
             style: {
-              borderRadius: "14px",
+              borderRadius: "2px",
               border: "1px solid hsl(var(--border))",
             },
           }}

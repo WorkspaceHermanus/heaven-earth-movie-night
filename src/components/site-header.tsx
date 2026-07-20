@@ -41,13 +41,13 @@ export function SiteHeader() {
         <nav className="flex items-center gap-2">
           <Link
             href="#details"
-            className="hidden rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
+            className="hidden px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-sand-700 md:block"
           >
             The Evening
           </Link>
           <Link
             href="#bring"
-            className="hidden rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
+            className="hidden px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-sand-700 md:block"
           >
             What to Bring
           </Link>

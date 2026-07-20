@@ -170,7 +170,7 @@ export function BookingForm({ remaining: initialRemaining }: Props) {
       {/* Ticket stepper */}
       <div className="space-y-3">
         <Label htmlFor="quantity">Number of tickets</Label>
-        <div className="flex items-center justify-between rounded-2xl border border-sand-200 bg-white/70 p-2.5">
+        <div className="flex items-center justify-between border border-sand-200 bg-white p-2.5">
           <StepperButton
             onClick={() => adjust(-1)}
             disabled={quantity <= EVENT.minTickets}
@@ -295,7 +295,7 @@ function StepperButton({
       disabled={disabled}
       aria-label={label}
       className={cn(
-        "inline-flex size-11 items-center justify-center rounded-xl border border-sand-200 bg-white text-sand-700 transition-all",
+        "inline-flex size-11 items-center justify-center rounded-none border border-sand-200 bg-white text-sand-700 transition-all",
         "hover:border-sand-400 hover:bg-sand-50 active:scale-95",
         "disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-sand-200 disabled:hover:bg-white",
       )}

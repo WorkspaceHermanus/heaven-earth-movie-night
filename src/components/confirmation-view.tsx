@@ -180,7 +180,7 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
           </div>
         </Card>
 
-        <div className="mt-8 flex items-start gap-3 rounded-2xl bg-sand-100/70 p-5 text-sm text-muted-foreground">
+        <div className="mt-8 flex items-start gap-3 bg-sand-100/70 p-5 text-sm text-muted-foreground">
           <Mail className="mt-0.5 size-4 shrink-0 text-sand-600" aria-hidden />
           <p>
             A confirmation email has been sent to you with all of these details.

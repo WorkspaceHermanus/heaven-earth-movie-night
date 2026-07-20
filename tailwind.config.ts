@@ -44,28 +44,33 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        /** Brand tokens, lifted from the Heaven & Earth logo and mood board. */
+        /**
+         * Brand tokens, matched to the dusty-rose mood board:
+         * `sand` is the primary rose scale, `blush` the warm cream/taupe
+         * neutrals, `gold` the tone of the H&E monogram.
+         */
         sand: {
-          50: "#FCFAF7",
-          100: "#F5EFE6",
-          200: "#EAE0D1",
-          300: "#DBCBB3",
-          400: "#CBAE81",
-          500: "#C08F4E",
-          600: "#A9793D",
-          700: "#8A6132",
-          800: "#6B4B28",
-          900: "#4A341C",
+          50: "#FBF7F5",
+          100: "#F5ECE8",
+          200: "#EDDCD6",
+          300: "#DFC2BA",
+          400: "#CFA49A",
+          500: "#C08D83",
+          600: "#A97367",
+          700: "#8B5B51",
+          800: "#6C463E",
+          900: "#4B312C",
         },
         blush: {
-          50: "#FBF3F0",
-          100: "#F5E4DE",
-          200: "#EBCFC6",
-          300: "#DCB4A9",
-          400: "#C6A19A",
-          500: "#B08880",
-          600: "#946E67",
+          50: "#FAF7F2",
+          100: "#F3ECE3",
+          200: "#E8DCCF",
+          300: "#D9C6B4",
+          400: "#C4A98F",
+          500: "#AE8F73",
+          600: "#92765C",
         },
+        gold: "#C2A177",
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
@@ -77,8 +82,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 8px)",
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(74, 52, 28, 0.04), 0 8px 24px -12px rgba(74, 52, 28, 0.14)",
-        lift: "0 2px 4px rgba(74, 52, 28, 0.05), 0 24px 48px -20px rgba(74, 52, 28, 0.22)",
+        soft: "0 1px 2px rgba(75, 49, 44, 0.04), 0 10px 28px -18px rgba(75, 49, 44, 0.14)",
+        lift: "0 1px 3px rgba(75, 49, 44, 0.05), 0 18px 40px -22px rgba(75, 49, 44, 0.2)",
       },
       keyframes: {
         "accordion-down": {

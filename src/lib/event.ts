@@ -6,7 +6,8 @@ export const EVENT = {
   name: "Women's Day Movie Night",
   host: "Heaven & Earth Hermanus",
   venue: "Volmoed",
-  venueAddress: "Hermanus, Western Cape",
+  venueAddress: "Hemel en Aarde Valley, Farm 11, R320, Hermanus, 7200",
+  venueAddressShort: "Hemel en Aarde Valley, Hermanus",
   /** ISO date of the event, used for structured data and email copy. */
   date: "2026-08-09",
   dateLabel: "Sunday, 9 August",
