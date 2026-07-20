@@ -22,8 +22,8 @@ export function EventDetails({ remaining }: { remaining: number }) {
     },
     {
       label: "Time",
-      value: `Doors ${EVENT.doorsOpen}`,
-      hint: `Movie starts ${EVENT.startTime}`,
+      value: `Worship ${EVENT.doorsOpen}`,
+      hint: `Movie 6:00 – 8:00 PM · Prayer to 8:30`,
     },
     {
       label: "Venue",

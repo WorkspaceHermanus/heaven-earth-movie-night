@@ -113,8 +113,9 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
     ["Tickets", `${booking.quantity} ${booking.quantity === 1 ? "ticket" : "tickets"}`],
     ["Amount paid", formatZAR(booking.totalAmount)],
     ["Date", EVENT.dateLabel],
-    ["Doors open", EVENT.doorsOpen],
-    ["Movie starts", EVENT.startTime],
+    ["Worship", "5:00 – 5:45 PM"],
+    ["Movie · War Room", "6:00 – 8:00 PM"],
+    ["Prayer & ministry", "8:00 – 8:30 PM"],
     ["Venue", EVENT.venue],
   ] as const;
 

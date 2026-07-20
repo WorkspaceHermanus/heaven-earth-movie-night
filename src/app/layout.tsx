@@ -19,7 +19,7 @@ const sans = Inter({
 });
 
 const title = `${EVENT.name} — ${EVENT.host}`;
-const description = `Celebrate Women's Day with an unforgettable movie night at ${EVENT.venue}, Hermanus. ${EVENT.dateLabel}, doors open ${EVENT.doorsOpen}. R50 per person, only ${EVENT.capacity} tickets available.`;
+const description = `Celebrate Women's Day at ${EVENT.venue}, Hermanus: worship from ${EVENT.doorsOpen}, then the movie War Room, closing with prayer and ministry. ${EVENT.dateLabel}. R50 per person, only ${EVENT.capacity} tickets available.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(getAppUrl()),

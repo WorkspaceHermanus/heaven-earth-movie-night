@@ -46,6 +46,12 @@ export function SiteHeader() {
             The Evening
           </Link>
           <Link
+            href="#film"
+            className="hidden px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-sand-700 md:block"
+          >
+            The Film
+          </Link>
+          <Link
             href="#bring"
             className="hidden px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-sand-700 md:block"
           >

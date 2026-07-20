@@ -11,10 +11,22 @@ export const EVENT = {
   /** ISO date of the event, used for structured data and email copy. */
   date: "2026-08-09",
   dateLabel: "Sunday, 9 August",
-  doorsOpen: "6:30 PM",
-  startTime: "7:00 PM",
-  doorsOpenISO: "2026-08-09T18:30:00+02:00",
-  endISO: "2026-08-09T21:30:00+02:00",
+  /** When the evening opens — worship kicks things off. */
+  doorsOpen: "5:00 PM",
+  startTime: "6:00 PM",
+  doorsOpenISO: "2026-08-09T17:00:00+02:00",
+  endISO: "2026-08-09T20:30:00+02:00",
+  movie: {
+    title: "War Room",
+    tagline:
+      "A drama about the power of prayer — a family discovers that victory begins in a quiet room.",
+    trailerYouTubeId: "mIl-XY9t_Lw",
+  },
+  schedule: [
+    { time: "5:00 – 5:45 PM", title: "Worship" },
+    { time: "6:00 – 8:00 PM", title: "Movie · War Room" },
+    { time: "8:00 – 8:30 PM", title: "Prayer & ministry" },
+  ],
   /** Ticket price in cents (ZAR). R50.00 */
   ticketPriceCents: 5000,
   capacity: 40,

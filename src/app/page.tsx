@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { EventDetails } from "@/components/event-details";
+import { FilmSection } from "@/components/film-section";
 import { WhatToBring } from "@/components/what-to-bring";
 import { BookingSection } from "@/components/booking-section";
 import { SiteFooter } from "@/components/site-footer";
@@ -18,6 +19,7 @@ export default async function HomePage() {
       <main id="main">
         <Hero remaining={remaining} />
         <EventDetails remaining={remaining} />
+        <FilmSection />
         <WhatToBring />
         <BookingSection remaining={remaining} />
       </main>

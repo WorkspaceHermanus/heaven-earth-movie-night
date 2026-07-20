@@ -84,7 +84,7 @@ export function Hero({ remaining }: { remaining: number }) {
           >
             <span className="px-5">{EVENT.dateLabel}</span>
             <span className="hidden h-3 w-px bg-sand-300 sm:block" aria-hidden />
-            <span className="px-5">Doors {EVENT.doorsOpen}</span>
+            <span className="px-5">From {EVENT.doorsOpen}</span>
             <span className="hidden h-3 w-px bg-sand-300 sm:block" aria-hidden />
             <span className="px-5">{EVENT.venue}</span>
           </motion.div>

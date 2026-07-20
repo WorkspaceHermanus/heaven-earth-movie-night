@@ -75,8 +75,9 @@ export function renderConfirmationEmail(booking: Booking): string {
             ${detailRow("Tickets", tickets)}
             ${detailRow("Amount paid", formatZAR(booking.totalAmount))}
             ${detailRow("Date", EVENT.dateLabel)}
-            ${detailRow("Doors open", EVENT.doorsOpen)}
-            ${detailRow("Movie starts", EVENT.startTime)}
+            ${detailRow("Worship", "5:00 – 5:45 PM")}
+            ${detailRow("Movie · War Room", "6:00 – 8:00 PM")}
+            ${detailRow("Prayer & ministry", "8:00 – 8:30 PM")}
             ${detailRow("Venue", EVENT.venue)}
           </table>
         </td></tr>
@@ -134,8 +135,9 @@ export function renderConfirmationText(booking: Booking): string {
     `Tickets: ${booking.quantity}`,
     `Amount paid: ${formatZAR(booking.totalAmount)}`,
     `Date: ${EVENT.dateLabel}`,
-    `Doors open: ${EVENT.doorsOpen}`,
-    `Movie starts: ${EVENT.startTime}`,
+    `Worship: 5:00 - 5:45 PM`,
+    `Movie (War Room): 6:00 - 8:00 PM`,
+    `Prayer & ministry: 8:00 - 8:30 PM`,
     `Venue: ${EVENT.venue}`,
     ``,
     `What to bring: your favourite pillow, a warm blanket, and comfortable clothes.`,
