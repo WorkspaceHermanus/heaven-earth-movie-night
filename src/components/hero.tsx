@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Botanical } from "@/components/botanical";
+import { Magnolia } from "@/components/magnolia";
 import { EVENT } from "@/lib/event";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -18,13 +19,21 @@ export function Hero({ remaining }: { remaining: number }) {
 
   return (
     <section className="relative overflow-hidden bg-background pb-24 pt-40 sm:pb-32 sm:pt-48">
-      {/* Line-art leaves, tucked into the corners like the invitation suite. */}
-      <Botanical
-        className="pointer-events-none absolute -left-6 top-24 h-48 w-auto rotate-[18deg] opacity-25 sm:h-64"
+      {/*
+       * Watermark magnolias. Sized generously and bled off the edges so they
+       * read as a printed background wash rather than as illustrations, and
+       * kept in the corners so they never sit behind the headline.
+       */}
+      <Magnolia
+        className="pointer-events-none absolute -right-28 -top-16 h-[22rem] w-auto rotate-[14deg] opacity-[0.24] sm:-right-16 sm:h-[34rem] sm:opacity-[0.36] lg:h-[38rem]"
       />
-      <Botanical
-        className="pointer-events-none absolute -right-8 bottom-4 h-56 w-auto -rotate-[160deg] opacity-20 sm:h-72"
+      <Magnolia
+        variant="bud"
+        className="pointer-events-none absolute -bottom-24 -left-32 h-72 w-auto -rotate-[152deg] opacity-[0.2] sm:-left-20 sm:h-96 sm:opacity-[0.3]"
       />
+
+      {/* Line-art sprig, kept as a lighter accent behind the wash. */}
+      <Botanical className="pointer-events-none absolute -left-6 top-28 h-40 w-auto rotate-[18deg] opacity-20 sm:h-52" />
 
       <div className="container relative">
         <motion.div

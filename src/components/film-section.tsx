@@ -1,4 +1,5 @@
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { TrailerPlayer } from "@/components/trailer-player";
 import { EVENT } from "@/lib/event";
 
 /**
@@ -47,20 +48,13 @@ export function FilmSection() {
           <Reveal delay={0.1}>
             {/* Inset keyline frame, matching the detail tiles. */}
             <div className="border border-white/30 p-2.5">
-              <div className="aspect-video w-full bg-sand-600">
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${EVENT.movie.trailerYouTubeId}`}
-                  title={`${EVENT.movie.title} — official trailer`}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  className="h-full w-full"
-                />
-              </div>
+              <TrailerPlayer
+                videoId={EVENT.movie.trailerYouTubeId}
+                title={`${EVENT.movie.title} — official trailer`}
+              />
             </div>
             <p className="mt-4 text-center text-[0.65rem] uppercase tracking-[0.24em] text-white/60">
-              Watch the official trailer
+              Starts muted — tap the player for sound
             </p>
           </Reveal>
         </div>
