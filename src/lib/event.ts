@@ -53,6 +53,14 @@ export const WHAT_TO_BRING = [
     description: "Think soft, warm and easy. No dress code, no fuss.",
   },
   {
+    title: "Snacks & drinks",
+    description: "Bring your own treats and something to sip through the film.",
+  },
+  {
+    title: "A notebook & pen",
+    description: "War Room stirs the heart — you may want to jot something down.",
+  },
+  {
     title: "A relaxed heart",
     description: "Arrive early, find your spot and enjoy the company.",
   },

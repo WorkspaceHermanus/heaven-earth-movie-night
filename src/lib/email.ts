@@ -87,9 +87,10 @@ export function renderConfirmationEmail(booking: Booking): string {
             <tr><td style="padding:20px 22px;">
               <div style="font-family:Georgia,serif;font-size:17px;color:${COLORS.ink};">What to bring</div>
               <ul style="margin:12px 0 0;padding-left:18px;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.8;color:${COLORS.muted};">
-                <li>Your favourite pillow</li>
-                <li>A warm blanket</li>
+                <li>Your favourite pillow &amp; a warm blanket</li>
                 <li>Comfortable clothes</li>
+                <li>Your own snacks &amp; drinks</li>
+                <li>A notebook &amp; pen</li>
               </ul>
             </td></tr>
           </table>
@@ -140,7 +141,7 @@ export function renderConfirmationText(booking: Booking): string {
     `Prayer & ministry: 8:00 - 8:30 PM`,
     `Venue: ${EVENT.venue}`,
     ``,
-    `What to bring: your favourite pillow, a warm blanket, and comfortable clothes.`,
+    `What to bring: your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
     ``,
     `Hosted by ${EVENT.host}`,
     `${EVENT.contactEmail}`,

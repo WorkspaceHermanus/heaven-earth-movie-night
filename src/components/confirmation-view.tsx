@@ -176,7 +176,8 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
               Remember to bring
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              Your favourite pillow, a warm blanket, and comfortable clothes.
+              Your favourite pillow, a warm blanket, comfortable clothes, your
+              own snacks &amp; drinks, and a notebook &amp; pen.
             </p>
           </div>
         </Card>

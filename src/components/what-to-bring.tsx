@@ -35,24 +35,24 @@ export function WhatToBring() {
         <Reveal delay={0.05} className="mt-16">
           {/* gap-px over a tinted backdrop draws the hairline lattice. */}
           <div className="border border-sand-300/70 bg-sand-300/70">
-            <StaggerGroup className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">
+            <StaggerGroup className="grid grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-3">
               {WHAT_TO_BRING.map((item, index) => (
                 <StaggerItem key={item.title} className="bg-blush-50">
-                  <div className="flex h-full flex-col items-center px-8 py-12 text-center">
+                  <div className="flex h-full flex-col items-center px-4 py-8 text-center sm:px-8 sm:py-12">
                     <span
-                      className="font-display text-xl italic leading-none text-sand-500"
+                      className="font-display text-lg italic leading-none text-sand-500 sm:text-xl"
                       aria-hidden
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span
-                      className="mt-5 block h-px w-8 bg-sand-400/70"
+                      className="mt-4 block h-px w-8 bg-sand-400/70 sm:mt-5"
                       aria-hidden
                     />
-                    <h3 className="mt-5 font-display text-2xl font-light leading-snug text-foreground">
+                    <h3 className="mt-4 font-display text-xl font-light leading-snug text-foreground sm:mt-5 sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3">
                       {item.description}
                     </p>
                   </div>

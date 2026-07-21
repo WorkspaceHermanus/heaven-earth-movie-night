@@ -59,7 +59,7 @@ export function EventDetails({ remaining }: { remaining: number }) {
           </p>
         </Reveal>
 
-        <StaggerGroup className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-16 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {items.map((item, index) => {
             const style = TILE_STYLES[index % TILE_STYLES.length];
             const onRose = style === TILE_STYLES[0];
@@ -70,7 +70,7 @@ export function EventDetails({ remaining }: { remaining: number }) {
                   {/* Inset keyline, like the framed tiles on the mood board. */}
                   <div
                     className={cn(
-                      "flex h-full flex-col items-center justify-center border px-6 py-12 text-center",
+                      "flex h-full flex-col items-center justify-center border px-4 py-8 text-center sm:px-6 sm:py-12",
                       onRose ? "border-white/30" : "border-sand-300/60",
                     )}
                   >
@@ -91,7 +91,7 @@ export function EventDetails({ remaining }: { remaining: number }) {
                     </p>
                     <p
                       className={cn(
-                        "mt-3 font-display text-3xl font-light leading-snug",
+                        "mt-3 font-display text-2xl font-light leading-snug sm:text-3xl",
                         onRose ? "text-white" : "text-foreground",
                       )}
                     >
@@ -114,7 +114,7 @@ export function EventDetails({ remaining }: { remaining: number }) {
           {/* Sixth tile balances the grid: a quiet pull-quote, mood-board style. */}
           <StaggerItem className="h-full">
             <div className="h-full bg-blush-50 p-2.5">
-              <div className="flex h-full flex-col items-center justify-center border border-sand-300/60 px-6 py-12 text-center">
+              <div className="flex h-full flex-col items-center justify-center border border-sand-300/60 px-4 py-8 text-center sm:px-6 sm:py-12">
                 <span
                   className="font-display text-5xl leading-none text-sand-400"
                   aria-hidden
