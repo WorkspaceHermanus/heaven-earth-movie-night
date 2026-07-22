@@ -24,13 +24,8 @@ export function Hero({ remaining }: { remaining: number }) {
        * read as a printed background wash rather than as illustrations, and
        * kept in the corners so they never sit behind the headline.
        */}
-      <Magnolia
-        className="pointer-events-none absolute -right-28 -top-16 h-[22rem] w-auto rotate-[14deg] opacity-[0.24] sm:-right-16 sm:h-[34rem] sm:opacity-[0.36] lg:h-[38rem]"
-      />
-      <Magnolia
-        variant="bud"
-        className="pointer-events-none absolute -bottom-24 -left-32 h-72 w-auto -rotate-[152deg] opacity-[0.2] sm:-left-20 sm:h-96 sm:opacity-[0.3]"
-      />
+      <Magnolia className="pointer-events-none absolute -right-28 -top-20 h-[22rem] w-auto rotate-[14deg] opacity-[0.26] sm:-right-16 sm:h-[34rem] sm:opacity-[0.38] lg:h-[38rem]" />
+      <Magnolia className="pointer-events-none absolute -bottom-28 -left-32 h-[18rem] w-auto -rotate-[8deg] opacity-[0.18] sm:-left-24 sm:h-[26rem] sm:opacity-[0.26]" />
 
       {/* Line-art sprig, kept as a lighter accent behind the wash. */}
       <Botanical className="pointer-events-none absolute -left-6 top-28 h-40 w-auto rotate-[18deg] opacity-20 sm:h-52" />
