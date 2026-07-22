@@ -116,7 +116,7 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
     ["Worship", "5:00 – 5:45 PM"],
     ["Movie · War Room", "6:00 – 8:00 PM"],
     ["Prayer & ministry", "8:00 – 8:30 PM"],
-    ["Venue", EVENT.venue],
+    ["Venue", EVENT.venueFull],
   ] as const;
 
   return (

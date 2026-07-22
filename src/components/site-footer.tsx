@@ -72,7 +72,9 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="pt-1 text-muted-foreground">
-                {EVENT.venue}, {EVENT.venueAddress}
+                {EVENT.venueFull}
+                <br />
+                {EVENT.venueAddress}
               </li>
             </ul>
           </div>

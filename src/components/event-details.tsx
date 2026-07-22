@@ -27,7 +27,7 @@ export function EventDetails({ remaining }: { remaining: number }) {
     },
     {
       label: "Venue",
-      value: EVENT.venue,
+      value: EVENT.venueFull,
       hint: EVENT.venueAddressShort,
     },
     {

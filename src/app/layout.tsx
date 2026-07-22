@@ -64,7 +64,7 @@ const eventJsonLd = {
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: {
     "@type": "Place",
-    name: EVENT.venue,
+    name: EVENT.venueFull,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Farm 11, R320, Hemel en Aarde Valley",

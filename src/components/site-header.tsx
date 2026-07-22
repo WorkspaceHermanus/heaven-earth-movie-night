@@ -57,6 +57,12 @@ export function SiteHeader() {
           >
             What to Bring
           </Link>
+          <Link
+            href="#finding-us"
+            className="hidden px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-sand-700 lg:block"
+          >
+            Finding Us
+          </Link>
           <Button asChild size="sm" className="ml-2">
             <Link href="#book">Book Tickets</Link>
           </Button>

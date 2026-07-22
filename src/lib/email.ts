@@ -78,7 +78,8 @@ export function renderConfirmationEmail(booking: Booking): string {
             ${detailRow("Worship", "5:00 – 5:45 PM")}
             ${detailRow("Movie · War Room", "6:00 – 8:00 PM")}
             ${detailRow("Prayer & ministry", "8:00 – 8:30 PM")}
-            ${detailRow("Venue", EVENT.venue)}
+            ${detailRow("Venue", EVENT.venueFull)}
+            ${detailRow("Address", EVENT.venueAddress)}
           </table>
         </td></tr>
 
@@ -139,7 +140,8 @@ export function renderConfirmationText(booking: Booking): string {
     `Worship: 5:00 - 5:45 PM`,
     `Movie (War Room): 6:00 - 8:00 PM`,
     `Prayer & ministry: 8:00 - 8:30 PM`,
-    `Venue: ${EVENT.venue}`,
+    `Venue: ${EVENT.venueFull}`,
+    `Address: ${EVENT.venueAddress}`,
     ``,
     `What to bring: your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
     ``,
