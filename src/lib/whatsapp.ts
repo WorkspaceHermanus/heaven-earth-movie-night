@@ -1,7 +1,7 @@
 import type { Booking } from "@prisma/client";
-import { EVENT, formatZAR } from "@/lib/event";
+import { EVENT } from "@/lib/event";
 import { toE164 } from "@/lib/phone";
-import { getAppUrl } from "@/lib/utils";
+import { ticketImageUrl } from "@/lib/ticket-message";
 
 const GRAPH_VERSION = "v21.0";
 
@@ -9,40 +9,6 @@ export function isWhatsAppConfigured() {
   return Boolean(
     process.env.WHATSAPP_TOKEN && process.env.WHATSAPP_PHONE_NUMBER_ID,
   );
-}
-
-/** Public URL of the rendered ticket image for a booking. */
-export function ticketUrl(reference: string) {
-  return `${getAppUrl()}/api/ticket/${encodeURIComponent(reference)}`;
-}
-
-/**
- * The message body. Kept in one place so the WhatsApp template, the manual
- * share link and the admin resend all say exactly the same thing.
- */
-export function ticketMessage(booking: Booking): string {
-  return [
-    `🎟️ *Your ticket is confirmed!*`,
-    ``,
-    `Hi ${booking.firstName}, thank you for booking *${EVENT.name}*.`,
-    ``,
-    `*Reference:* ${booking.reference}`,
-    `*Tickets:* ${booking.quantity}`,
-    `*Paid:* ${formatZAR(booking.totalAmount)}`,
-    ``,
-    `📅 ${EVENT.dateLabel}`,
-    `🎵 Worship 5:00 – 5:45 PM`,
-    `🎬 War Room 6:00 – 8:00 PM`,
-    `🙏 Prayer & ministry 8:00 – 8:30 PM`,
-    `📍 ${EVENT.venueFull}, Hemel en Aarde Valley`,
-    ``,
-    `*Please bring:* your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
-    ``,
-    `Your ticket: ${ticketUrl(booking.reference)}`,
-    ``,
-    `See you there! 💛`,
-    `${EVENT.host}`,
-  ].join("\n");
 }
 
 export type WhatsAppResult =
@@ -95,7 +61,7 @@ export async function sendTicketWhatsApp(
         {
           type: "header",
           parameters: [
-            { type: "image", image: { link: ticketUrl(booking.reference) } },
+            { type: "image", image: { link: ticketImageUrl(booking.reference) } },
           ],
         },
         {

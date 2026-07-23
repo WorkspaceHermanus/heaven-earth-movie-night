@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { BrandMark } from "@/components/brand-mark";
 import { EVENT, formatZAR } from "@/lib/event";
 import { waLink } from "@/lib/phone";
+import { ticketMessage } from "@/lib/ticket-message";
 
 export type AdminBooking = {
   id: string;
@@ -43,30 +44,13 @@ type Stats = {
   revenue: number;
 };
 
-/** Mirrors the automated WhatsApp copy, for the manual send link. */
+/**
+ * Builds the manual-send text from the same helper the automated send uses,
+ * so the two can never drift apart.
+ */
 function ticketWhatsAppText(b: AdminBooking): string {
-  return [
-    `🎟️ *Your ticket is confirmed!*`,
-    ``,
-    `Hi ${b.firstName}, thank you for booking *${EVENT.name}*.`,
-    ``,
-    `*Reference:* ${b.reference}`,
-    `*Tickets:* ${b.quantity}`,
-    `*Paid:* ${formatZAR(b.totalAmount)}`,
-    ``,
-    `📅 ${EVENT.dateLabel}`,
-    `🎵 Worship 5:00 – 5:45 PM`,
-    `🎬 War Room 6:00 – 8:00 PM`,
-    `🙏 Prayer & ministry 8:00 – 8:30 PM`,
-    `📍 ${EVENT.venueFull}, Hemel en Aarde Valley`,
-    ``,
-    `*Please bring:* your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
-    ``,
-    `Your ticket: ${typeof window !== "undefined" ? window.location.origin : ""}/api/ticket/${b.reference}`,
-    ``,
-    `See you there! 💛`,
-    `${EVENT.host}`,
-  ].join("\n");
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  return ticketMessage(b, origin);
 }
 
 const STATUS_VARIANT: Record<
