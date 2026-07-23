@@ -3,6 +3,7 @@ import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { verifyYocoWebhookSignature } from "@/lib/yoco";
 import { sendConfirmationEmail } from "@/lib/email";
+import { sendTicketWhatsApp } from "@/lib/whatsapp";
 
 export const dynamic = "force-dynamic";
 
@@ -118,6 +119,9 @@ export async function POST(request: Request) {
     },
   });
 
+  // Email and WhatsApp are both best-effort: the booking is already paid and
+  // valid, so a delivery failure is logged for the organiser to resend rather
+  // than failing the webhook (which would make Yoco retry the whole thing).
   if (!paid.emailSentAt) {
     const result = await sendConfirmationEmail(paid);
     if (result.ok) {
@@ -126,9 +130,22 @@ export async function POST(request: Request) {
         data: { emailSentAt: new Date() },
       });
     } else {
-      // The booking is valid regardless; log loudly so an organiser can
-      // resend from the admin dashboard.
       console.error("[yoco-webhook] confirmation email failed", {
+        reference: paid.reference,
+        error: result.error,
+      });
+    }
+  }
+
+  if (!paid.whatsappSentAt) {
+    const result = await sendTicketWhatsApp(paid);
+    if (result.ok) {
+      await prisma.booking.update({
+        where: { id: paid.id },
+        data: { whatsappSentAt: new Date() },
+      });
+    } else if (!result.skipped) {
+      console.error("[yoco-webhook] WhatsApp ticket failed", {
         reference: paid.reference,
         error: result.error,
       });

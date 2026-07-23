@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check, Loader2, Mail, Printer } from "lucide-react";
+import { Check, Download, Loader2, Mail, MessageCircle, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BrandMark } from "@/components/brand-mark";
 import { EVENT, formatZAR } from "@/lib/event";
+import { waLink } from "@/lib/phone";
 
 export type PublicBooking = {
   reference: string;
@@ -92,12 +93,17 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
           Your booking reference is{" "}
           <strong className="text-foreground">{booking.reference}</strong>. If
           you completed payment, it may still be clearing — you&rsquo;ll get an
-          email as soon as it does. Otherwise please contact us at{" "}
+          email as soon as it does. Otherwise please WhatsApp{" "}
           <a
             className="text-sand-600 underline underline-offset-4"
-            href={`mailto:${EVENT.contactEmail}`}
+            href={waLink(
+              EVENT.contactPhone,
+              `Hi ${EVENT.contactName}, I paid for the ${EVENT.name} but my booking (${booking.reference}) is not confirmed.`,
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {EVENT.contactEmail}
+            {EVENT.contactName} on {EVENT.contactPhone}
           </a>
           .
         </p>
@@ -107,6 +113,24 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
       </Card>
     );
   }
+
+  const ticketHref = `/api/ticket/${encodeURIComponent(booking.reference)}`;
+
+  // No recipient number: WhatsApp opens and the guest picks who to send it
+  // to — themselves, or whoever they're coming with.
+  const waShareHref = waLink(
+    null,
+    [
+      `🎟️ My ticket for ${EVENT.name}`,
+      ``,
+      `Reference: ${booking.reference}`,
+      `Tickets: ${booking.quantity}`,
+      `${EVENT.dateLabel} · Worship 5:00 PM · Movie 6:00 PM`,
+      `${EVENT.venueFull}, Hemel en Aarde Valley`,
+      ``,
+      `Ticket: ${typeof window !== "undefined" ? window.location.origin : ""}${ticketHref}`,
+    ].join("\n"),
+  );
 
   const rows = [
     ["Guest", `${booking.firstName} ${booking.lastName}`],
@@ -182,7 +206,51 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
           </div>
         </Card>
 
-        <div className="mt-8 flex items-start gap-3 bg-sand-100/70 p-5 text-sm text-muted-foreground">
+        {/* Shareable ticket */}
+        <div className="no-print mt-12">
+          <div className="flex items-center gap-5">
+            <span className="hairline" aria-hidden />
+            <p className="eyebrow whitespace-nowrap">Your Ticket</p>
+            <span className="hairline" aria-hidden />
+          </div>
+
+          <a
+            href={ticketHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-6 block border border-sand-300/70 bg-white p-2.5 transition-colors hover:border-sand-500"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={ticketHref}
+              alt={`Ticket for ${booking.firstName} ${booking.lastName}, reference ${booking.reference}`}
+              width={1080}
+              height={1350}
+              className="h-auto w-full"
+            />
+          </a>
+
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button asChild size="lg">
+              <a
+                href={waShareHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="size-4" aria-hidden />
+                Send ticket to WhatsApp
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href={ticketHref} download={`ticket-${booking.reference}.png`}>
+                <Download className="size-4" aria-hidden />
+                Download ticket
+              </a>
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-10 flex items-start gap-3 bg-sand-100/70 p-5 text-sm text-muted-foreground">
           <Mail className="mt-0.5 size-4 shrink-0 text-sand-600" aria-hidden />
           <p>
             A confirmation email has been sent to you with all of these details.
@@ -191,10 +259,10 @@ export function ConfirmationView({ initial }: { initial: PublicBooking }) {
           </p>
         </div>
 
-        <div className="no-print mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <Button onClick={() => window.print()} variant="outline">
+        <div className="no-print mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <Button onClick={() => window.print()} variant="ghost">
             <Printer className="size-4" aria-hidden />
-            Print or save as PDF
+            Print
           </Button>
           <Button asChild variant="ghost">
             <Link href="/">Back to the event</Link>

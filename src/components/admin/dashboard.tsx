@@ -6,6 +6,7 @@ import {
   Ban,
   Download,
   LogOut,
+  MessageCircle,
   Search,
   Send,
   Ticket,
@@ -19,6 +20,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BrandMark } from "@/components/brand-mark";
 import { EVENT, formatZAR } from "@/lib/event";
+import { waLink } from "@/lib/phone";
 
 export type AdminBooking = {
   id: string;
@@ -40,6 +42,32 @@ type Stats = {
   capacity: number;
   revenue: number;
 };
+
+/** Mirrors the automated WhatsApp copy, for the manual send link. */
+function ticketWhatsAppText(b: AdminBooking): string {
+  return [
+    `🎟️ *Your ticket is confirmed!*`,
+    ``,
+    `Hi ${b.firstName}, thank you for booking *${EVENT.name}*.`,
+    ``,
+    `*Reference:* ${b.reference}`,
+    `*Tickets:* ${b.quantity}`,
+    `*Paid:* ${formatZAR(b.totalAmount)}`,
+    ``,
+    `📅 ${EVENT.dateLabel}`,
+    `🎵 Worship 5:00 – 5:45 PM`,
+    `🎬 War Room 6:00 – 8:00 PM`,
+    `🙏 Prayer & ministry 8:00 – 8:30 PM`,
+    `📍 ${EVENT.venueFull}, Hemel en Aarde Valley`,
+    ``,
+    `*Please bring:* your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
+    ``,
+    `Your ticket: ${typeof window !== "undefined" ? window.location.origin : ""}/api/ticket/${b.reference}`,
+    ``,
+    `See you there! 💛`,
+    `${EVENT.host}`,
+  ].join("\n");
+}
 
 const STATUS_VARIANT: Record<
   string,
@@ -247,6 +275,29 @@ export function AdminDashboard({
                     </td>
                     <td className="whitespace-nowrap px-5 py-4 text-right">
                       <div className="flex justify-end gap-1">
+                        {/* Opens WhatsApp with the ticket message ready to
+                            send — works without the Cloud API. */}
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="ghost"
+                          disabled={booking.status !== "PAID"}
+                          title="Open WhatsApp with this guest's ticket"
+                        >
+                          <a
+                            href={waLink(
+                              booking.phone,
+                              ticketWhatsAppText(booking),
+                            )}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <MessageCircle className="size-4" aria-hidden />
+                            <span className="sr-only">
+                              WhatsApp ticket to {booking.firstName}
+                            </span>
+                          </a>
+                        </Button>
                         <Button
                           size="sm"
                           variant="ghost"

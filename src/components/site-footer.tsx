@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, Phone } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { EVENT } from "@/lib/event";
+import { waLink } from "@/lib/phone";
 
 export function SiteFooter() {
   return (
@@ -55,11 +56,16 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <a
-                  href={`mailto:${EVENT.contactEmail}`}
+                  href={waLink(
+                    EVENT.contactPhone,
+                    `Hi ${EVENT.contactName}, I have a question about the ${EVENT.name}.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 rounded text-muted-foreground transition-colors hover:text-sand-700"
                 >
-                  <Mail className="size-4" aria-hidden />
-                  {EVENT.contactEmail}
+                  <MessageCircle className="size-4" aria-hidden />
+                  WhatsApp {EVENT.contactName}
                 </a>
               </li>
               <li>

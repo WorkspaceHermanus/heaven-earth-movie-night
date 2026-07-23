@@ -107,7 +107,7 @@ export function renderConfirmationEmail(booking: Booking): string {
         <tr><td style="padding:24px 40px 34px;text-align:center;border-top:1px solid ${COLORS.line};">
           <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.7;color:${COLORS.muted};">
             Hosted by ${EVENT.host}<br>
-            Questions? Reply to this email or contact us at ${EVENT.contactEmail}.
+            Questions? WhatsApp ${EVENT.contactName} on ${EVENT.contactPhone}.
           </p>
         </td></tr>
 
@@ -146,7 +146,7 @@ export function renderConfirmationText(booking: Booking): string {
     `What to bring: your favourite pillow, a warm blanket, comfortable clothes, your own snacks & drinks, and a notebook & pen.`,
     ``,
     `Hosted by ${EVENT.host}`,
-    `${EVENT.contactEmail}`,
+    `Questions? WhatsApp ${EVENT.contactName} on ${EVENT.contactPhone}`,
   ].join("\n");
 }
 
@@ -167,7 +167,6 @@ export async function sendConfirmationEmail(
       subject: `Booking confirmed — ${EVENT.name} (${booking.reference})`,
       html: renderConfirmationEmail(booking),
       text: renderConfirmationText(booking),
-      replyTo: EVENT.contactEmail,
     });
 
     if (error) return { ok: false, error: error.message };

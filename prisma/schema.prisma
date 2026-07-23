@@ -41,6 +41,10 @@ model Booking {
   /// retries never send a duplicate.
   emailSentAt   DateTime?
 
+  /// Set once the WhatsApp ticket is accepted by the Cloud API, so retries
+  /// and manual resends never double-send.
+  whatsappSentAt DateTime?
+
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 

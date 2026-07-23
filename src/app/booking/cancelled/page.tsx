@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { BrandMark } from "@/components/brand-mark";
 import { SiteFooter } from "@/components/site-footer";
 import { EVENT } from "@/lib/event";
+import { waLink } from "@/lib/phone";
 
 export const dynamic = "force-dynamic";
 
@@ -74,12 +75,17 @@ export default async function CancelledPage({
             </div>
 
             <p className="mt-8 text-sm text-muted-foreground">
-              Need a hand? Email us at{" "}
+              Need a hand? WhatsApp{" "}
               <a
                 className="text-sand-600 underline underline-offset-4"
-                href={`mailto:${EVENT.contactEmail}`}
+                href={waLink(
+                  EVENT.contactPhone,
+                  `Hi ${EVENT.contactName}, I had trouble paying for the ${EVENT.name}.`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {EVENT.contactEmail}
+                {EVENT.contactName} on {EVENT.contactPhone}
               </a>
               .
             </p>

@@ -40,8 +40,9 @@ export const EVENT = {
   minTickets: 1,
   maxTickets: 6,
   currency: "ZAR",
-  contactEmail: "hello@heavenandearthhermanus.co.za",
-  contactPhone: "+27 82 000 0000",
+  /** Kim handles booking queries — WhatsApp is the contact channel. */
+  contactName: "Kim",
+  contactPhone: "+27 82 888 2570",
   instagram: "https://www.instagram.com/heavenandearthhermanus",
   facebook: "https://www.facebook.com/heavenandearthhermanus",
 } as const;
